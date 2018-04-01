@@ -6,14 +6,14 @@
 
 import { fromJS } from 'immutable';
 import {
-  DEFAULT_ACTION,
+  LOAD_ARCHIVE,
 } from './constants';
 
 const initialState = fromJS({});
 
 function archiveReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
+    case LOAD_ARCHIVE:
       return state;
     default:
       return state;

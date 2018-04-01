@@ -5,11 +5,11 @@
  */
 
 import {
-  DEFAULT_ACTION,
+  LOAD_ARCHIVE,
 } from './constants';
 
-export function defaultAction() {
+export function loadArchive() {
   return {
-    type: DEFAULT_ACTION,
+    type: LOAD_ARCHIVE,
   };
 }
