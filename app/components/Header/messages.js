@@ -10,8 +10,8 @@ export default defineMessages({
     id: 'boilerplate.components.Header.home',
     defaultMessage: 'Home',
   },
-  features: {
+  archive: {
     id: 'boilerplate.components.Header.archive',
-    defaultMessage: 'Archived Notes',
+    defaultMessage: 'Archive',
   },
 });

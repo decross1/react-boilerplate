@@ -13,6 +13,7 @@ import { Switch, Route } from 'react-router-dom';
 // Import Pages used for Routing
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import Archive from 'containers/Archive/Loadable';
 
 // Importing Headers and Footers
 import Header from 'components/Header';
@@ -33,6 +34,7 @@ export default function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route exact path="/archive" component={Archive} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <Footer />
