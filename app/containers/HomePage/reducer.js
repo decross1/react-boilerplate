@@ -30,17 +30,17 @@ function homeReducer(state = initialState, action) {
       return state
         .set('message', action.message);
     case ARCHIVE_MESSAGE:
-      return state
-        .set('loading', true);
+      return state;
+        // .set('loading', true);
     case MESSAGE_ARCHIVE_SUCCESS:
       return state
         .set('message', '')
-        .set('loading', false)
+        // .set('loading', false)
         .set('success', true)
         .set('error', false);
     case MESSAGE_ARCHIVE_ERR:
       return state
-        .set('loading', false)
+        // .set('loading', false)
         .set('success', false)
         .set('error', action.error);
     default:

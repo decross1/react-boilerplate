@@ -10,7 +10,7 @@ import { makeSelectMessage } from 'containers/HomePage/selectors';
 
 export function* archiveMessage() {
   const message = yield select(makeSelectMessage());
-  const requestURL = 'http://localhost:3000/post';
+  const requestURL = 'http://localhost:3000/api/post';
   const options = {
     method: 'POST',
     headers: {
