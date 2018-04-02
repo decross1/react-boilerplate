@@ -14,15 +14,14 @@ import { createStructuredSelector } from 'reselect';
 
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
-import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/App/selectors';
 import H2 from 'components/H2';
 import CenteredSection from './CenteredSection';
 import Form from './Form';
 import Text from './Text';
 import Section from './Section';
 import messages from './messages';
-import { changeMessage } from './actions';
-import { makeSelectUsername } from './selectors';
+import { changeMessage, archiveMessage } from './actions';
+import { makeSelectMessage, makeSelectSuccess, makeSelectErr } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
@@ -34,13 +33,6 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   }
 
   render() {
-    const { loading, error, repos } = this.props;
-    const reposListProps = {
-      loading,
-      error,
-      repos,
-    };
-
     return (
       <article>
         <Helmet>
@@ -81,15 +73,11 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 }
 
 HomePage.propTypes = {
-  loading: PropTypes.bool,
-  error: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.bool,
-  ]),
-  repos: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.bool,
-  ]),
+  // loading: PropTypes.bool,
+  // error: PropTypes.oneOfType([
+  //   PropTypes.object,
+  //   PropTypes.bool,
+  // ]),
   onSubmitForm: PropTypes.func,
   username: PropTypes.string,
   onChangeMessage: PropTypes.func,
@@ -100,16 +88,15 @@ export function mapDispatchToProps(dispatch) {
     onChangeMessage: (evt) => dispatch(changeMessage(evt.target.value)),
     onSubmitForm: (evt) => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch('nothing');
+      dispatch(archiveMessage());
     },
   };
 }
 
 const mapStateToProps = createStructuredSelector({
-  repos: makeSelectRepos(),
-  username: makeSelectUsername(),
-  loading: makeSelectLoading(),
-  error: makeSelectError(),
+  message: makeSelectMessage(),
+  success: makeSelectSuccess(),
+  error: makeSelectErr(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

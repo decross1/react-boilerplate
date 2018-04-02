@@ -13,6 +13,9 @@ import { fromJS } from 'immutable';
 
 import {
   CHANGE_MESSAGE,
+  ARCHIVE_MESSAGE,
+  MESSAGE_ARCHIVE_SUCCESS,
+  MESSAGE_ARCHIVE_ERROR,
 } from './constants';
 
 // The initial state of the App
@@ -26,6 +29,20 @@ function homeReducer(state = initialState, action) {
       // Delete prefixed '@' from the github username
       return state
         .set('message', action.message);
+    case ARCHIVE_MESSAGE:
+      return state
+        .set('loading', true);
+    case MESSAGE_ARCHIVE_SUCCESS:
+      return state
+        .set('message', '')
+        .set('loading', false)
+        .set('success', true)
+        .set('error', false);
+    case MESSAGE_ARCHIVE_ERROR:
+      return state
+        .set('loading', false)
+        .set('success', false)
+        .set('error', action.error);
     default:
       return state;
   }

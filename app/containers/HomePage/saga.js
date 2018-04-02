@@ -1,37 +1,34 @@
 /**
- * Gets the repositories of the user from Github
+ * Archives a message to the database
  */
 
 import { call, put, select, takeLatest } from 'redux-saga/effects';
-import { LOAD_REPOS } from 'containers/App/constants';
+import { ARCHIVE_MESSAGE } from 'containers/HomePage/constants';
+import { archiveMessageSuccess, archiveMessageErr } from 'containers/HomePage/actions';
+import { makeSelectMessage } from 'containers/HomePage/selectors';
+import { request } from 'utils/request';
 
-import request from 'utils/request';
-import { makeSelectUsername } from 'containers/HomePage/selectors';
-
-/**
- * Github repos request/response handler
- */
-export function* getRepos() {
-  // Select username from store
-  const username = yield select(makeSelectUsername());
-  const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`;
-
+export function* insertNote() {
+  const message = yield select(makeSelectMessage());
+  const requestURL = 'http://localhost:3000/post';
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ message }),
+  };
   try {
-    // Call our request helper (see 'utils/request')
-    const repos = yield call(request, requestURL);
-    yield put(reposLoaded(repos, username));
+    yield call(request, requestURL, options);
+    yield put(archiveMessageSuccess());
   } catch (err) {
-    yield put(repoLoadingError(err));
+    yield put(archiveMessageErr(err));
   }
 }
 
 /**
  * Root saga manages watcher lifecycle
  */
-export default function* githubData() {
-  // Watches for LOAD_REPOS actions and calls getRepos when one comes in.
-  // By using `takeLatest` only the result of the latest API call is applied.
-  // It returns task descriptor (just like fork) so we can continue execution
-  // It will be cancelled automatically on component unmount
-  yield takeLatest(LOAD_REPOS, getRepos);
+export default function* noteData() {
+  yield takeLatest(ARCHIVE_MESSAGE, insertNote);
 }

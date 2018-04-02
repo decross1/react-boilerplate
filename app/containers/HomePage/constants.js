@@ -9,4 +9,7 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const CHANGE_MESSAGE = 'boilerplate/Home/CHANGE_MESSAGE';
+export const CHANGE_MESSAGE = 'messageArchive/Home/CHANGE_MESSAGE';
+export const ARCHIVE_MESSAGE = 'messageArchive/Home/ARCHIVE_MESSAGE';
+export const MESSAGE_ARCHIVE_SUCCESS = 'messageArchive/Home/MESSAGE_ARCHIVE_SUCCESS';
+export const MESSAGE_ARCHIVE_ERROR = 'messageArchive/Home/MESSAGE_ARCHIVE_ERROR';
