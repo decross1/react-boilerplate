@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
-const Text = styled.textarea`
+const Text = styled.input`
   outline: none;
-  border-bottom: 1px dotted #999;
+  width: 100%;
+  height: 100px;
+  white-space: wrap;
 `;
 
 export default Text;
