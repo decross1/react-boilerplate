@@ -19,7 +19,7 @@ import {
   CHANGE_MESSAGE,
   ARCHIVE_MESSAGE,
   MESSAGE_ARCHIVE_SUCCESS,
-  MESSAGE_ARCHIVE_ERROR,
+  MESSAGE_ARCHIVE_ERR,
 } from './constants';
 
 /**
@@ -48,9 +48,9 @@ export function archiveMessageSuccess() {
   };
 }
 
-export function archiveMessageError(error) {
+export function archiveMessageErr(error) {
   return {
-    type: MESSAGE_ARCHIVE_ERROR,
+    type: MESSAGE_ARCHIVE_ERR,
     error,
   };
 }

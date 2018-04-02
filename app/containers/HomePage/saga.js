@@ -3,12 +3,12 @@
  */
 
 import { call, put, select, takeLatest } from 'redux-saga/effects';
+import { request } from 'utils/request';
 import { ARCHIVE_MESSAGE } from 'containers/HomePage/constants';
 import { archiveMessageSuccess, archiveMessageErr } from 'containers/HomePage/actions';
 import { makeSelectMessage } from 'containers/HomePage/selectors';
-import { request } from 'utils/request';
 
-export function* insertNote() {
+export function* archiveMessage() {
   const message = yield select(makeSelectMessage());
   const requestURL = 'http://localhost:3000/post';
   const options = {
@@ -29,6 +29,6 @@ export function* insertNote() {
 /**
  * Root saga manages watcher lifecycle
  */
-export default function* noteData() {
-  yield takeLatest(ARCHIVE_MESSAGE, insertNote);
+export default function* messageData() {
+  yield takeLatest(ARCHIVE_MESSAGE, archiveMessage);
 }

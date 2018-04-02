@@ -15,7 +15,7 @@ import {
   CHANGE_MESSAGE,
   ARCHIVE_MESSAGE,
   MESSAGE_ARCHIVE_SUCCESS,
-  MESSAGE_ARCHIVE_ERROR,
+  MESSAGE_ARCHIVE_ERR,
 } from './constants';
 
 // The initial state of the App
@@ -38,7 +38,7 @@ function homeReducer(state = initialState, action) {
         .set('loading', false)
         .set('success', true)
         .set('error', false);
-    case MESSAGE_ARCHIVE_ERROR:
+    case MESSAGE_ARCHIVE_ERR:
       return state
         .set('loading', false)
         .set('success', false)
