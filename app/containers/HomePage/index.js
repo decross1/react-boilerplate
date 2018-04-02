@@ -21,7 +21,6 @@ import Form from './Form';
 import Text from './Text';
 import Section from './Section';
 import messages from './messages';
-import { loadRepos } from '../App/actions';
 import { changeMessage } from './actions';
 import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
@@ -32,9 +31,6 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
    * when initial state username is not null, submit the form to load repos
    */
   componentDidMount() {
-    if (this.props.username && this.props.username.trim().length > 0) {
-      this.props.onSubmitForm();
-    }
   }
 
   render() {
@@ -104,7 +100,7 @@ export function mapDispatchToProps(dispatch) {
     onChangeMessage: (evt) => dispatch(changeMessage(evt.target.value)),
     onSubmitForm: (evt) => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(loadRepos());
+      dispatch('nothing');
     },
   };
 }
