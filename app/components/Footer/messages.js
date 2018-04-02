@@ -8,12 +8,10 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   licenseMessage: {
     id: 'boilerplate.components.Footer.license.message',
-    defaultMessage: 'This project is licensed under the MIT license.',
+    defaultMessage: 'This project was originally built from the React Boilerplate Repo',
   },
   authorMessage: {
     id: 'boilerplate.components.Footer.author.message',
-    defaultMessage: `
-      Made with love by {author}.
-    `,
+    defaultMessage: 'Message Archiver Built By: Derrick Cross',
   },
 });

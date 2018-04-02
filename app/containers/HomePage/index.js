@@ -16,11 +16,9 @@ import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/App/selectors';
 import H2 from 'components/H2';
-import ReposList from 'components/ReposList';
-import AtPrefix from './AtPrefix';
 import CenteredSection from './CenteredSection';
 import Form from './Form';
-import Input from './Input';
+import Text from './Text';
 import Section from './Section';
 import messages from './messages';
 import { loadRepos } from '../App/actions';
@@ -50,8 +48,8 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     return (
       <article>
         <Helmet>
-          <title>Home Page</title>
-          <meta name="description" content="A React.js Boilerplate application homepage" />
+          <title>Message Archiver</title>
+          <meta name="description" content="A React.js Web Application for Saving Messages" />
         </Helmet>
         <div>
           <CenteredSection>
@@ -67,21 +65,18 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
               <FormattedMessage {...messages.trymeHeader} />
             </H2>
             <Form onSubmit={this.props.onSubmitForm}>
-              <label htmlFor="username">
-                <FormattedMessage {...messages.trymeMessage} />
-                <AtPrefix>
-                  <FormattedMessage {...messages.trymeAtPrefix} />
-                </AtPrefix>
-                <Input
-                  id="username"
+              <label htmlFor="message">
+                <Text
+                  cols={93}
+                  rows={12}
+                  id="message"
                   type="text"
-                  placeholder="mxstbr"
+                  placeholder="This is an example message..."
                   value={this.props.username}
                   onChange={this.props.onChangeUsername}
                 />
               </label>
             </Form>
-            <ReposList {...reposListProps} />
           </Section>
         </div>
       </article>
