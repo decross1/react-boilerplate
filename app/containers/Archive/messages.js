@@ -8,6 +8,6 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   header: {
     id: 'app.containers.Archive.header',
-    defaultMessage: 'This is Archive container !',
+    defaultMessage: 'Welcome to Your Message Archive!',
   },
 });

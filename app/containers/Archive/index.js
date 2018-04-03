@@ -19,6 +19,8 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
+import H2 from '../../components/H2';
+
 export class Archive extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
     this.props.renderMessages();
@@ -26,7 +28,9 @@ export class Archive extends React.PureComponent { // eslint-disable-line react/
   render() {
     return (
       <div>
-        <FormattedMessage {...messages.header} />
+        <H2>
+          <FormattedMessage {...messages.header} />
+        </H2>
       </div>
     );
   }
