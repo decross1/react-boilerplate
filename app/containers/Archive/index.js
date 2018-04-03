@@ -33,7 +33,7 @@ export class Archive extends React.PureComponent { // eslint-disable-line react/
 }
 
 Archive.propTypes = {
-  // err: PropTypes.bool
+  err: PropTypes.bool,
   renderMessages: PropTypes.func,
   archive: PropTypes.object,
 };
