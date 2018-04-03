@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the archive state domain
  */
-const selectArchiveDomain = (state) => state.get('archive');
+const selectArchive = (state) => state.get('archive');
 
 /**
  * Other specific selectors
@@ -15,11 +15,17 @@ const selectArchiveDomain = (state) => state.get('archive');
  */
 
 const makeSelectArchive = () => createSelector(
-  selectArchiveDomain,
-  (substate) => substate.toJS()
+  selectArchive,
+  (homeState) => homeState.get('messages')
 );
 
-export default makeSelectArchive;
+const makeSelectErr = () => createSelector(
+  selectArchive,
+  (homeState) => homeState.get('err')
+);
+
 export {
-  selectArchiveDomain,
+  selectArchive,
+  makeSelectArchive,
+  makeSelectErr,
 };

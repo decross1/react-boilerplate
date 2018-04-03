@@ -13,12 +13,16 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectArchive from './selectors';
+import { makeSelectArchive, makeSelectErr } from './selectors';
+import { loadArchive } from './actions';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
 export class Archive extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  componentDidMount() {
+    this.props.renderMessages();
+  }
   render() {
     return (
       <div>
@@ -29,16 +33,19 @@ export class Archive extends React.PureComponent { // eslint-disable-line react/
 }
 
 Archive.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  // err: PropTypes.bool
+  renderMessages: PropTypes.func,
+  archive: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
   archive: makeSelectArchive(),
+  err: makeSelectErr(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    renderMessages: () => { dispatch(loadArchive()); },
   };
 }
 
