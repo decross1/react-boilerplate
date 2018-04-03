@@ -21,7 +21,10 @@ import messages from './messages';
 
 // Import Styled Components used for Design
 import H2 from '../../components/H2';
-import H3 from '../../components/H3';
+// import H3 from '../../components/H3';
+import ListItem from '../../components/ListItem/ListItem.js';
+import UL from '../../components/UnorderedList/UnorderedList.js';
+
 
 export class Archive extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -33,9 +36,9 @@ export class Archive extends React.PureComponent { // eslint-disable-line react/
         <H2>
           <FormattedMessage {...messages.header} />
         </H2>
-        <ul>
-          {this.props.archive.messagesMod.map((message) => <H3 key={message._id}>{message.message} </H3>)} 
-        </ul>
+        <UL>
+          {this.props.archive.messagesMod.map((message) => <ListItem key={message._id}>{message.message} </ListItem>)}
+        </UL>
       </div>
     );
   }
