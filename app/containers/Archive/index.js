@@ -37,7 +37,7 @@ export class Archive extends React.PureComponent { // eslint-disable-line react/
           <FormattedMessage {...messages.header} />
         </H2>
         <UL>
-          {this.props.archive.messagesMod.map((message) => <ListItem key={message._id}>{message.message} </ListItem>)}
+          {this.props.archive.map((message) => <ListItem key={message._id}>{message.message} </ListItem>)}
         </UL>
       </div>
     );

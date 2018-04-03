@@ -16,7 +16,7 @@ export function* getMessages() {
     // Call our request helper (see 'utils/request')
     const messages = yield call(request, requestURL);
     const messagesMod = yield call(parseJSON, messages);
-    yield put(archiveLoaded({ messagesMod }));
+    yield put(archiveLoaded(messagesMod));
   } catch (err) {
     yield put(archiveLoadingError(err));
   }
