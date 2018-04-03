@@ -26,7 +26,6 @@ const initialState = fromJS({
 function homeReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_MESSAGE:
-      // Delete prefixed '@' from the github username
       return state
         .set('message', action.message);
     case ARCHIVE_MESSAGE:

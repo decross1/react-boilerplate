@@ -26,11 +26,6 @@ import reducer from './reducer';
 import saga from './saga';
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  /**
-   * when initial state username is not null, submit the form to load repos
-   */
-  componentDidMount() {
-  }
 
   render() {
     return (
@@ -60,7 +55,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
                   id="message"
                   type="text"
                   placeholder="This is an example message..."
-                  value={this.props.username}
+                  value={this.props.message}
                   onChange={this.props.onChangeMessage}
                 />
               </label>
@@ -73,12 +68,12 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 }
 
 HomePage.propTypes = {
-  // error: PropTypes.oneOfType([
-  //   PropTypes.object,
-  //   PropTypes.bool,
-  // ]),
+  error: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.bool,
+  ]),
   onSubmitForm: PropTypes.func,
-  username: PropTypes.string,
+  message: PropTypes.string,
   onChangeMessage: PropTypes.func,
 };
 
